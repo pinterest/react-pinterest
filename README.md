@@ -8,7 +8,7 @@ As ReactJS continues to increase in popularity for both startups and large-scale
 npm install react-pinterest --save
 ```
 
-![](https://raw.githubusercontent.com/zackargyle/react-pinterest/master/examples/images/demo.png)
+![](https://raw.githubusercontent.com/pinterest/react-pinterest/master/examples/images/demo.png)
 
 The full list of available widgets are:
   - Pin It Button
