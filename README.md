@@ -38,7 +38,7 @@ description | string | the description of the Pin to create
 
 Use: 
 ``` js
-import { PinItButton } from 'react-social-buttons';
+import { PinItButton } from 'react-pinterest';
 
 // To create a Pin one Pin It button
 <PinItButton type="one" media="https://goo.gl/zFFBUK" url="https://goo.gl/hQmcWP" description="Example Stuff"/>
@@ -67,7 +67,7 @@ Choose either a `board` or `user` to follow. If both are specificed, board will 
 
 Use:
 ``` js
-import { PinterestFollowButton } from 'react-social-buttons';
+import { PinterestFollowButton } from 'react-pinterest';
 
 // To create a board follow button
 <PinterestFollowButton board="pinterest/official-news">Official News</PinterestFollowButton>
@@ -86,7 +86,7 @@ lang | string | 'en'       | language code for Pin
  
 Use:
 ``` js
-import { PinterestPinWidget } from 'react-social-buttons';
+import { PinterestPinWidget } from 'react-pinterest';
 
 // Pin Widgets default to small
 <PinterestPinWidget pin="530158187357124374" />
@@ -105,7 +105,7 @@ columns | number | *required* | the number of columns in the grid
 
 Use:
 ``` js
-import { PinterestBoardWidget } from 'react-social-buttons';
+import { PinterestBoardWidget } from 'react-pinterest';
 
 <PinterestBoardWidget board="pinterest/official-news" width={300} height={300} columns={5} />
 ```
@@ -121,7 +121,7 @@ columns | number | *required* | the number of columns in the grid
 
 Use:
 ``` js
-import { PinterestProfileWidget } from 'react-social-buttons';
+import { PinterestProfileWidget } from 'react-pinterest';
 
 <PinterestProfileWidget user="pinterest" width={300} height={300} columns={5} />
 ```
@@ -136,7 +136,7 @@ columns | number | ?       | the number of columns to use in the grid, if unspec
 Use:
 ``` js
 
-import { PinterestGrid, PinterestPinWidget } from 'react-social-buttons';
+import { PinterestGrid, PinterestPinWidget } from 'react-pinterest';
 
 <PinterestGrid gutter={gutter}>
     <PinterestPinWidget pin="530158187357124374" />
