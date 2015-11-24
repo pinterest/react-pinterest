@@ -1,36 +1,40 @@
 ## react-pinterest
 
-A collection of official Pinterest button/widget components
-
-![](https://raw.githubusercontent.com/zackargyle/react-pinterest/master/examples/images/demo.png)
+As ReactJS continues to increase in popularity for both startups and large-scale technology companies, we wanted to make it as easy as possible to add Pinterest content onto these sites. This helps both you and us. The more content you drive into Pinterest, the more traffic you get in return. React brings widgets to a whole new level, and we are excited to introduce a React component collection of our already popular Pinterest widgets.
 
 ## Install
 
 ``` js
-// TODO
 npm install react-pinterest --save
 ```
 
+![](https://raw.githubusercontent.com/zackargyle/react-pinterest/master/examples/images/demo.png)
+
 The full list of available widgets are:
-  - [PinItButton](#PinItButton)
-  - PinterestFollowButton
-  - PinterestPinWidget
-  - PinterestProfileWidget
-  - PinterestBoardWidget
-  - PinterestGrid
+  - Pin It Button
+  - Pinterest Follow Button
+  - Pinterest Pin Widget
+  - Pinterest Profile Widget
+  - Pinterest Board Widget
+  - Pinterest Grid
 
-## PinItButton
-General Props
- * @prop {string}  type - enum of { 'any', 'one' }: default 'any'
- * @prop {string}  color - enum of { red, white, grey }: default grey
- * @prop {boolean} large - is large sized button: default false
- * @prop {boolean} round - is circular button: default false
+## Pin It Button
 
-For type="one" you can either repin or create a new Pin
- *      @prop {string} pin - the id of the Pin to `repin`
- *      @prop {string} media - the image url of the Pin to create
- *      @prop {string} url - the link back of the Pin to create
- *      @prop {string} description - the description of the Pin to create
+prop  | type    | default | notes
+------| ------- | ------- | ----------
+type  | string  | 'any'   | enum of { 'any', 'one' }
+color | string  | 'grey'  | enum of { 'red', 'white', 'grey' }
+large | boolean | false   | is large sized button
+round | boolean | false   | is circular button
+
+The following props are specific for type="one". Each prop refers to the Pin to be pinned on click. If `pin` is specified, it will be a repin, otherwise it will create a new Pin using `media, url, and description`.
+
+prop        | type   | notes
+----------- |------- | ----------
+pin         | string | the id of the Pin to `repin`
+media       | string | the image url of the Pin to create
+url         | string | the link back of the Pin to create
+description | string | the description of the Pin to create
 
 Use: 
 ``` js
@@ -52,10 +56,14 @@ import { PinItButton } from 'react-social-buttons';
 <PinItButton type="any" round={true} large={true} />
 ```
 
-## PinterestFollowButton
-General Props: choose one or the other, favors board
- * @prop {string} board - the board slug of the board to follow (<username>/<board_name>)
- * @prop {string} user - the username of the user to follow (<username>/<board_name>)
+## Pinterest Follow Button
+
+prop  | type   | notes
+----- | ------ | ----------
+board | string | the board slug of the board to follow (`<username>/<board_name>`)
+user  | string | the username of the user to follow
+
+Choose either a `board` or `user` to follow. If both are specificed, board will be used.
 
 Use:
 ``` js
@@ -68,11 +76,13 @@ import { PinterestFollowButton } from 'react-social-buttons';
 <PinterestFollowButton user="pinterest">Pinterest</PinterestFollowButton>
 ```
 
-## PinterestPinWidget
-General Props: required=pin
- * @prop {string} pin - the id of the Pin to display
- * @prop {string} size - enum of { small, medium, large }: default: small
- * @prop {string} lang - language code for Pin: default: en
+## Pinterest Pin Widget
+
+prop | type   | default    | notes
+---- | ------ | ---------- | ----------
+pin  | string | *required* | the id of the Pin to display
+size | string | 'small'    | enum of { 'small', 'medium', 'large' }
+lang | string | 'en'       | language code for Pin
  
 Use:
 ``` js
@@ -84,12 +94,14 @@ import { PinterestPinWidget } from 'react-social-buttons';
 <PinterestPinWidget size="large" pin="530158187357124374" />
 ```
 
-## PinterestBoardWidget
-General Props: required=board,width,height,columns
- * @prop {string} board - the board slug of the board (<username>/<board_name>)
- * @prop {number} width - the width of the board widget
- * @prop {number} height - the height of the board widget
- * @prop {number} columns - the number of columns in the grid
+## Pinterest Board Widget
+
+prop    | type   | default    | notes
+------- | ------ | ---------- | ----------
+board   | string | *required* | the board slug of the board (`<username>/<board_name>`)
+width   | number | *required* | the width of the board widget
+height  | number | *required* | the height of the board widget
+columns | number | *required* | the number of columns in the grid
 
 Use:
 ``` js
@@ -98,12 +110,14 @@ import { PinterestBoardWidget } from 'react-social-buttons';
 <PinterestBoardWidget board="pinterest/official-news" width={300} height={300} columns={5} />
 ```
 
-## PinterestProfileWidget
-General Props: required=user,width,height,columns
- * @prop {string} user - the username of the profile
- * @prop {number} width - the width of the profile widget
- * @prop {number} height - the height of the profile widget
- * @prop {number} columns - the number of columns in the grid
+## Pinterest Profile Widget
+
+prop    | type   | default    | notes
+------- | ------ | ---------- | ----------
+user    | string | *required* | the username of the profile
+width   | number | *required* | the width of the board widget
+height  | number | *required* | the height of the board widget
+columns | number | *required* | the number of columns in the grid
 
 Use:
 ``` js
@@ -112,11 +126,12 @@ import { PinterestProfileWidget } from 'react-social-buttons';
 <PinterestProfileWidget user="pinterest" width={300} height={300} columns={5} />
 ```
 
-## PinterestGrid
-General Props: required=none
- * @prop {string} gutter - the margin between grid elements
- * @prop {string} columns - the number of columns to use in the grid, if unspecified
- *          it will guess based on the width of the first grid element
+## Pinterest Grid
+
+prop    | type   | default | notes
+------- | ------ | ------- | ----------
+gutter  | number | 0       | the margin between grid elements
+columns | number | ?       | the number of columns to use in the grid, if unspecified it will guess based on the width of the first grid element
 
 Use:
 ``` js
@@ -141,7 +156,7 @@ import { PinterestGrid, PinterestPinWidget } from 'react-social-buttons';
 ```
 ## Running the example
 
-    cd examples; node server.js
+    npm install; cd examples; node server.js
 
 Then open `http://localhost:3000`
 
@@ -149,13 +164,3 @@ Try adding a query param to change the PinterestPinWidget size `?size=medium` or
 
 ## License
 [MIT](http://isekivacenz.mit-license.org/)
-
-## Notes
-``` js
-/* TODO
-  - use PinterestBase to handle href click logging
-  - internationalize all the thingz (www -> domain)
-  - <PinitHoverButton /> extend from PinitButton?
-  - Extract out global "window" object
-*/
-```
