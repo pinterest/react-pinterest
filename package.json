@@ -27,7 +27,7 @@
   "scripts": {
     "clean": "rimraf dist lib",
     "build": "npm run build:lib && npm run build:dev && npm run build:prod",
-    "build:lib": "babel src --out-dir lib --presets es2015,react",
+    "build:lib": "babel src --out-dir lib",
     "build:dev": "webpack lib/main.js dist/react-pinterest.js --config webpack.config.base.js",
     "build:prod": "webpack lib/main.js dist/react-pinterest.min.js --config webpack.config.prod.js",
     "postinstall": "npm run build",
