@@ -3,6 +3,7 @@ import React from 'react';
 
 import PinterestBase from './PinterestBase';
 import Anchor from './PinterestAnchor';
+import Config from '../util/PinConfig';
 import Const from '../util/PinConst';
 import i18n from '../util/i18n';
 import Util from '../util/PinUtil';
@@ -63,7 +64,7 @@ export default class PinterestPinWidget extends PinterestBase {
      */
     handlePinit(evt) {
         evt.preventDefault();
-        const href = `https://www.pinterest.com/pin/${this.state.pin.id}/repin/x/?guid=${this.config.guid}`;
+        const href = `https://www.pinterest.com/pin/${this.state.pin.id}/repin/x/?guid=${Config.guid}`;
         window.open(href, 'pin' + new Date().getTime(), Const.POPUP_OPTIONS.PIN_CREATE);
         Util.log({ type: 'embed_pin_repin' + this.logSize, href: href });
     }
@@ -90,7 +91,7 @@ export default class PinterestPinWidget extends PinterestBase {
      */
     getButtonImage() {
         const base = 'https://s-passets.pinimg.com/images/pidgets/';
-        const resolution = this.config.resolution;
+        const resolution = Util.getResolution();
         let url;
         if (this.props.lang === 'ja') {
             url = `pinit_bg_ja_rect_red_20_${resolution}.png`;
@@ -139,7 +140,7 @@ export default class PinterestPinWidget extends PinterestBase {
      * for ability to report copyright infringement
      */
     renderMenu() {
-        const resolution = this.config.resolution;
+        const resolution = Util.getResolution();
         const image = `url(https://s-passets.pinimg.com/images/pidgets/menu_${resolution}.png)`;
         return (
             <span>

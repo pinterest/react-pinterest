@@ -1,3 +1,4 @@
+import Config from './PinConfig';
 import Const from './PinConst';
 
 /**
@@ -9,8 +10,7 @@ export default {
      * @param {object} data - key/value pairs of query parameters to log
      */
     log: function(data) {
-        const config = window[Const.GLOBAL];
-        let query = `?guid=${config.guid}&via=${encodeURIComponent(location.href)}`;
+        let query = `?guid=${Config.guid}&via=${encodeURIComponent(location.href)}`;
         Object.keys(data).forEach(key => query += `&${key}=${encodeURIComponent(data[key])}`);
         this.loadScript(Const.URL.LOG + query, {});
     },
@@ -36,16 +36,14 @@ export default {
      * @param {function} callback - the callback to be called on complete
      */
     fetch: function(url, callback) {
-        const config = window[Const.GLOBAL];
-        const length = config.callbacks.length;
-        const key = `window.${Const.GLOBAL}.callbacks[${length}]`;
-        const src = `${url}&callback=${key}`;
-        config.callbacks.push(callback);
-        this.loadScript(src, {
-            id: key,
-            type: 'text/javascript',
-            charset: 'utf-8'
-        });
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.onload = function() {
+          if (request.status >= 200 && request.status < 400) {
+            callback(JSON.parse(request.responseText));
+          }
+        };
+        request.send();
     },
 
     /**
@@ -63,6 +61,18 @@ export default {
             }
         });
         return base;
+    },
+
+    /**
+     * Allow for server rendering
+     * @returns {number} the screen resolution
+     */
+    getResolution: function() {
+        if (window) {
+            return window.devicePixelRatio >= 2 ? 2 : 1;
+        } else {
+            return 1;
+        }
     },
 
     /**
