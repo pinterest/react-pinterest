@@ -3,6 +3,7 @@ import React from 'react';
 
 import PinterestBase from './PinterestBase';
 import Anchor from './PinterestAnchor';
+import Config from '../util/PinConfig';
 import Const from '../util/PinConst';
 import Util from '../util/PinUtil';
 
@@ -30,9 +31,9 @@ export default class PinterestFollowButton extends PinterestBase {
     render() {
         let href;
         if (this.props.board) {
-            href = `https://www.pinterest.com/${this.props.board}/follow/?guid=${this.config.guid}`;
+            href = `https://www.pinterest.com/${this.props.board}/follow/?guid=${Config.guid}`;
         } else {
-            href = `https://www.pinterest.com/${this.props.user}/pins/follow/?guid=${this.config.guid}`
+            href = `https://www.pinterest.com/${this.props.user}/pins/follow/?guid=${Config.guid}`
         }
         return (
             <Anchor className="pinterest-follow-button" href={href} log="button_follow" popup="follow">

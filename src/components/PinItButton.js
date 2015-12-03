@@ -2,6 +2,8 @@ import React from 'react';
 
 import PinterestBase from './PinterestBase';
 import Anchor from './PinterestAnchor';
+
+import Config from '../util/PinConfig';
 import Const from '../util/PinConst';
 import Util from '../util/PinUtil';
 
@@ -38,7 +40,7 @@ export default class PinItButton extends PinterestBase {
         const shape = round ? 'round' : 'rect';
         const size = round ? (large ? '32' : '16') : (large ? '28' : '20');
         const _color = round ? 'red' : color;
-        const resolution = this.config.resolution;
+        const resolution = Util.getResolution();
         return `//s-passets.pinimg.com/images/pidgets/pinit_bg_en_${shape}_${_color}_${size}_${resolution}.png`;
     }
 
@@ -81,12 +83,12 @@ export default class PinItButton extends PinterestBase {
         const {pin, media, url, description} = this.props;
         let href;
         if (pin) {
-            href = Const.URL.REPIN.replace('<id>', pin) + `?guid=${this.config.guid}`;
+            href = Const.URL.REPIN.replace('<id>', pin) + `?guid=${Config.guid}`;
         } else {
-            href = Const.URL.PIN_CREATE + `?guid=${this.config.guid}`;
+            href = Const.URL.PIN_CREATE + `?guid=${Config.guid}`;
             href += `&media=${encodeURIComponent(media)}`;
-            href += `&url=${encodeURIComponent(url)}`;
-            href += `&description=${encodeURIComponent(description)}`;
+            href += `&url=${encodeURIComponent(url || document.URL)}`;
+            href += `&description=${encodeURIComponent(description || document.title)}`;
         }
         return (
             <Anchor className={this.getClasses()} href={href} log="button_pinit" popup="pin_create" >
@@ -145,6 +147,6 @@ PinItButton.defaultProps = {
     round: false,
     pin: null,
     media: null,
-    url: document.URL,
-    description: document.title
+    url: '',
+    description: ''
 };
