@@ -31,9 +31,13 @@
     "build:lib": "babel src --out-dir lib",
     "build:dev": "webpack lib/main.js dist/react-pinterest.js --config webpack.config.base.js",
     "build:prod": "webpack lib/main.js dist/react-pinterest.min.js --config webpack.config.prod.js",
-    "postinstall": "npm run build",
     "prepublish": "npm run clean && npm run build"
   },
+  "files": [
+    "dist/",
+    "lib/",
+    "src/"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/pinterest/react-pinterest.git"
