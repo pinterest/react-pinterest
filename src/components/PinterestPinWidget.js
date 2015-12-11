@@ -326,11 +326,7 @@ export default class PinterestPinWidget extends PinterestBase {
 PinterestPinWidget.propTypes = {
     pin: React.PropTypes.string.isRequired,
     lang: React.PropTypes.string,
-    size: function(props, propName, component) {
-        if (!/small|medium|large/.test(props[propName])) {
-            return new Error('PinterestPinWidget <size> must be small, medium, or large');
-        }
-    }
+    size: React.PropTypes.oneOf(['small', 'medium', 'large'])
 };
 
 PinterestPinWidget.defaultProps = {

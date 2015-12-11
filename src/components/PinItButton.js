@@ -130,8 +130,8 @@ export default class PinItButton extends PinterestBase {
 }
 
 PinItButton.propTypes = {
-  type: React.PropTypes.string,
-  color: React.PropTypes.string,
+  type: React.PropTypes.oneOf(['any', 'one']),
+  color: React.PropTypes.oneOf(['red', 'white', 'gray']),
   large: React.PropTypes.bool,
   round: React.PropTypes.bool,
   pin: React.PropTypes.string,
