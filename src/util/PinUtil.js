@@ -68,9 +68,9 @@ export default {
      * @returns {number} the screen resolution
      */
     getResolution: function() {
-        if (window) {
+        try {
             return window.devicePixelRatio >= 2 ? 2 : 1;
-        } else {
+        } catch (e) {
             return 1;
         }
     },
