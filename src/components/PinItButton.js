@@ -5,9 +5,8 @@ import React from 'react';
 import PinterestBase from './PinterestBase';
 import Anchor from './PinterestAnchor';
 
-import Config from '../util/PinConfig';
-import Const from '../util/PinConst';
-import Util from '../util/PinUtil';
+import { GUID, URL, COUNT_TYPES } from '../util/PinConst';
+import { log, loadScript, getResolution } from '../util/PinUtil';
 
 /**
  * This is the classic Pin It button, with several optional props. The
@@ -30,7 +29,7 @@ export default class PinItButton extends PinterestBase {
 
     constructor(props) {
         super(props);
-        this.logCount(Const.COUNT.BUTTON);
+        this.logCount(COUNT_TYPES.BUTTON);
     }
 
     /**
@@ -42,7 +41,7 @@ export default class PinItButton extends PinterestBase {
         const shape = round ? 'round' : 'rect';
         const size = round ? (large ? '32' : '16') : (large ? '28' : '20');
         const _color = round ? 'red' : color;
-        const resolution = Util.getResolution();
+        const resolution = getResolution();
         return `//s-passets.pinimg.com/images/pidgets/pinit_bg_en_${shape}_${_color}_${size}_${resolution}.png`;
     }
 
@@ -52,7 +51,7 @@ export default class PinItButton extends PinterestBase {
      */
     getClasses() {
         return (
-            'pinterest-pinit-button ' + 
+            'pinterest-pinit-button ' +
             (this.props.large ? 'pinit-button--large ' : '') +
             (this.props.round ? 'pinit-button--round' : '')
         );
@@ -73,9 +72,9 @@ export default class PinItButton extends PinterestBase {
     pinAny(evt) {
         if(!isBrowser) return;
         evt.preventDefault();
-        var url = Const.URL.PINMARKLET + '?r=' + Math.random() * 99999999;
-        Util.loadScript(url, { pinMethod: 'button' });
-        Util.log({ type: 'button_pinit_bookmarklet', href: Const.URL.PIN_CREATE});
+        var url = URL.PINMARKLET + '?r=' + Math.random() * 99999999;
+        loadScript(url, { pinMethod: 'button' });
+        log({ type: 'button_pinit_bookmarklet', href: URL.PIN_CREATE});
     }
 
     /**
@@ -87,14 +86,14 @@ export default class PinItButton extends PinterestBase {
         let {url, description} = this.props;
         let href;
         if (pin) {
-            href = Const.URL.REPIN.replace('<id>', pin) + `?guid=${Config.guid}`;
+            href = URL.REPIN.replace('<id>', pin) + `?guid=${GUID}`;
         } else {
             if(isBrowser) {
               url = url || window.document.URL;
               description = description || window.document.title;
             }
 
-            href = Const.URL.PIN_CREATE + `?guid=${Config.guid}`;
+            href = URL.PIN_CREATE + `?guid=${GUID}`;
             href += `&media=${encodeURIComponent(media)}`;
             href += `&url=${encodeURIComponent(url)}`;
             href += `&description=${encodeURIComponent(description)}`;
@@ -112,7 +111,7 @@ export default class PinItButton extends PinterestBase {
      */
     renderPinAny() {
         return (
-            <a className={this.getClasses()} href={Const.URL.PIN_CREATE} onClick={this.pinAny.bind(this)} >
+            <a className={this.getClasses()} href={URL.PIN_CREATE} onClick={this.pinAny.bind(this)} >
               <i style={this.getButtonStyle()} ></i>
             </a>
         );

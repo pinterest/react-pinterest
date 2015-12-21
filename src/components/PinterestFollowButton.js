@@ -3,8 +3,7 @@ import React from 'react';
 
 import PinterestBase from './PinterestBase';
 import Anchor from './PinterestAnchor';
-import Config from '../util/PinConfig';
-import Const from '../util/PinConst';
+import { GUID, COUNT_TYPES } from '../util/PinConst';
 import Util from '../util/PinUtil';
 
 /**
@@ -21,8 +20,8 @@ export default class PinterestFollowButton extends PinterestBase {
         super(props);
         if (!props.board && !props.user) {
             throw 'PinterestFollowButton requires either a <board> slug or a <user> name.';
-        } 
-        this.logCount(Const.COUNT.FOLLOW);
+        }
+        this.logCount(COUNT_TYPES.FOLLOW);
     }
 
     /**
@@ -31,9 +30,9 @@ export default class PinterestFollowButton extends PinterestBase {
     render() {
         let href;
         if (this.props.board) {
-            href = `https://www.pinterest.com/${this.props.board}/follow/?guid=${Config.guid}`;
+            href = `https://www.pinterest.com/${this.props.board}/follow/?guid=${GUID}`;
         } else {
-            href = `https://www.pinterest.com/${this.props.user}/pins/follow/?guid=${Config.guid}`
+            href = `https://www.pinterest.com/${this.props.user}/pins/follow/?guid=${GUID}`
         }
         return (
             <Anchor className="pinterest-follow-button" href={href} log="button_follow" popup="follow">

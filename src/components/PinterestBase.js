@@ -1,38 +1,38 @@
 import React from 'react';
 
-import Config from '../util/PinConfig';
-import Const from '../util/PinConst';
+import { Counts } from '../util/PinConfig';
+import { COUNT_TYPES } from '../util/PinConst';
 import i18n from '../util/i18n';
-import Util from '../util/PinUtil';
+import { log } from '../util/PinUtil';
 
 /**
  * @prop {string} (required) type - enum of either 'any' or 'one'
- * 
+ *
  */
 export default class PinterestBase extends React.Component {
 
     constructor(props) {
         super(props)
         this.debounceInitialLogging();
-        i18n.setLang(this.props.lang || 'en');
+        i18n.lang = this.props.lang;
     }
 
     /**
      * Wait for the page to settle before logging the widget counts
      */
     debounceInitialLogging() {
-        if (!Config.initialized) {
+        if (!PinterestBase.initialized) {
             clearTimeout(this.timeout);
             this.timeout = setTimeout(() => {
-                Config.initialized = true;
-                Util.log({
-                    [Const.COUNT.BUTTON]: Config[Const.COUNT.BUTTON],
-                    [Const.COUNT.FOLLOW]: Config[Const.COUNT.FOLLOW],
-                    [Const.COUNT.PIN_SMALL]: Config[Const.COUNT.PIN_SMALL],
-                    [Const.COUNT.PIN_MEDIUM]: Config[Const.COUNT.PIN_MEDIUM],
-                    [Const.COUNT.PIN_LARGE]: Config[Const.COUNT.PIN_LARGE],
-                    [Const.COUNT.PROFILE]: Config[Const.COUNT.PROFILE],
-                    [Const.COUNT.BOARD]: Config[Const.COUNT.BOARD]
+                PinterestBase.initialized = true;
+                log({
+                    [COUNT_TYPES.BUTTON]: Counts.BUTTON,
+                    [COUNT_TYPES.FOLLOW]: Counts.FOLLOW,
+                    [COUNT_TYPES.PIN_SMALL]: Counts.PIN_SMALL,
+                    [COUNT_TYPES.PIN_MEDIUM]: Counts.PIN_MEDIUM,
+                    [COUNT_TYPES.PIN_LARGE]: Counts.PIN_LARGE,
+                    [COUNT_TYPES.PROFILE]: Counts.PROFILE,
+                    [COUNT_TYPES.BOARD]: Counts.BOARD
                 });
             }, 1000);
         }
@@ -44,6 +44,6 @@ export default class PinterestBase extends React.Component {
      * @param {string} type - the type of widget to log
      */
     logCount(type) {
-        Config[type]++;
+        Counts[type]++;
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PinterestGridWidgetBase from './PinterestGridWidgetBase';
-import Const from '../util/PinConst';
+import { GUID, URL, COUNT_TYPES} from '../util/PinConst';
 
 /**
  * Pinterest Board Widget
@@ -19,10 +19,10 @@ export default class PinterestBoardWidget extends PinterestGridWidgetBase {
         super(props);
         this.data = {
             type: 'board',
-            fetchURL: `${Const.URL.BOARD}${props.board}/pins/?base_scheme=http`,
-            followURL: `https://www.pinterest.com/${props.board}/follow/?guid=ZEtR27kXo22a`
+            fetchURL: `${URL.BOARD}${props.board}/pins/?base_scheme=http`,
+            followURL: `https://www.pinterest.com/${props.board}/follow/?guid=${GUID}`
         };
-        this.logCount(Const.COUNT.BOARD);
+        this.logCount(COUNT_TYPES.BOARD);
     }
 
 }

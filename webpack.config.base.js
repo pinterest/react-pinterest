@@ -13,6 +13,7 @@ module.exports = {
     libraryTarget: 'umd'
   },
   resolve: {
+    root: [],
     extensions: ['', '.js']
   },
   plugins: [

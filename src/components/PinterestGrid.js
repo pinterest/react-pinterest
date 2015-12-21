@@ -1,7 +1,8 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import PinterestBase from './PinterestBase';
-import Util from '../util/PinUtil';
+import { extend } from '../util/PinUtil';
 
 /**
  * This is the classic Pinterest "masonry" grid. It lays out all of the
@@ -42,7 +43,7 @@ export default class PinterestGrid extends PinterestBase {
      * @returns {object} style key/value map
      */
     getStyle() {
-        return Util.extend({
+        return extend({
             opacity: this.state.styles.length ? 1 : 0
         }, this.props.style);
     }
@@ -68,9 +69,9 @@ export default class PinterestGrid extends PinterestBase {
         if (this.props.columns) {
             return this.props.columns;
         } else {
-            const rootNode = React.findDOMNode(this.refs.root);
+            const rootNode = ReactDOM.findDOMNode(this.refs.root);
             const rootWidth = rootNode.offsetWidth || rootNode.parentNode.offsetWidth;
-            const childNode = React.findDOMNode(this.refs['child-0']);
+            const childNode = ReactDOM.findDOMNode(this.refs['child-0']);
             const childWidth = childNode.offsetWidth;
             return Math.floor(rootWidth / (childWidth + this.props.gutter));
         }
@@ -85,10 +86,10 @@ export default class PinterestGrid extends PinterestBase {
         this.waitForChildren().then(() => {
             const columnCount = this.getColumnCount();
             const gutter = this.props.gutter;
-            const nodeWidth = React.findDOMNode(this.refs['child-0']).offsetWidth;
+            const nodeWidth = ReactDOM.findDOMNode(this.refs['child-0']).offsetWidth;
             let columnHeights = Array.apply(null, Array(columnCount)).map(x => 0);
             const styles = this.props.children.map((child, i) => {
-                const node = React.findDOMNode(this.refs[`child-${i}`]);
+                const node = ReactDOM.findDOMNode(this.refs[`child-${i}`]);
                 const columnIndex = this.getShortestColumn(columnHeights);
                 const top = columnHeights[columnIndex];
                 const left = columnIndex * (nodeWidth + gutter);
@@ -111,8 +112,8 @@ export default class PinterestGrid extends PinterestBase {
         return new Promise(resolve => {
             var interval = setInterval(() => {
                 const ready = this.props.children.every((child, i) => {
-                    const node = React.findDOMNode(this.refs[`child-${i}`]);
-                    return React.findDOMNode(this.refs[`child-${i}`]);
+                    const node = ReactDOM.findDOMNode(this.refs[`child-${i}`]);
+                    return ReactDOM.findDOMNode(this.refs[`child-${i}`]);
                 });
                 if (ready) {
                     clearInterval(interval);
@@ -131,7 +132,7 @@ export default class PinterestGrid extends PinterestBase {
             const style = child.props.style || {};
             return React.cloneElement(child, {
                 ref: `child-${i}`,
-                style: Util.extend({}, this.state.styles[i], child.props.style)
+                style: extend({}, this.state.styles[i], child.props.style)
             });
         });
     }
@@ -154,5 +155,5 @@ PinterestGrid.propTypes = {
 };
 
 PinterestGrid.defaultProps = {
-    gutter: 0 
+    gutter: 0
 };
