@@ -1,3 +1,5 @@
+const isBrowser = typeof window !== 'undefined';
+
 import React from 'react';
 
 import PinterestBase from './PinterestBase';
@@ -69,6 +71,7 @@ export default class PinItButton extends PinterestBase {
      * @param {event} evt - the corresponding click event
      */
     pinAny(evt) {
+        if(!isBrowser) return;
         evt.preventDefault();
         var url = Const.URL.PINMARKLET + '?r=' + Math.random() * 99999999;
         Util.loadScript(url, { pinMethod: 'button' });
@@ -80,15 +83,21 @@ export default class PinItButton extends PinterestBase {
      * @returns {JSX}
      */
     renderPinOne() {
-        const {pin, media, url, description} = this.props;
+        const {pin, media} = this.props;
+        let {url, description} = this.props;
         let href;
         if (pin) {
             href = Const.URL.REPIN.replace('<id>', pin) + `?guid=${Config.guid}`;
         } else {
+            if(isBrowser) {
+              url = url || window.document.URL;
+              description = description || window.document.title;
+            }
+
             href = Const.URL.PIN_CREATE + `?guid=${Config.guid}`;
             href += `&media=${encodeURIComponent(media)}`;
-            href += `&url=${encodeURIComponent(url || document.URL)}`;
-            href += `&description=${encodeURIComponent(description || document.title)}`;
+            href += `&url=${encodeURIComponent(url)}`;
+            href += `&description=${encodeURIComponent(description)}`;
         }
         return (
             <Anchor className={this.getClasses()} href={href} log="button_pinit" popup="pin_create" >
