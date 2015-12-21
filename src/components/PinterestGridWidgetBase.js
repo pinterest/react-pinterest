@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 
 import PinterestBase from './PinterestBase';
 import PinterestGrid from './PinterestGrid';
@@ -137,7 +138,7 @@ export default class PinterestGridWidgetBase extends PinterestBase {
      * @returns {JSX} the footer JSX
      */
     renderFooter() {
-        const logo = React.renderToString(<span className="grid-widget-logo"></span>);
+        const logo = ReactDOMServer.renderToString(<span className="grid-widget-logo"></span>);
         const log = `embed_${this.data.type}_ft`;
         const text = i18n.translate("Follow On $1", logo);
         const width = { width: this.getGridWidth() - border };
