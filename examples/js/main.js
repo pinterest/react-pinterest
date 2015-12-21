@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import '../../src/css/pinterest.css';
 import { 
     PinItButton,
@@ -62,4 +63,4 @@ class Examples extends React.Component {
     }
 }
 
-React.render(<Examples />, document.getElementById('app'));
+ReactDOM.render(<Examples />, document.getElementById('app'));
