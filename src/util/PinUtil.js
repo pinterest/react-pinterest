@@ -1,3 +1,4 @@
+const isBrowser = typeof window !== 'undefined';
 import Config from './PinConfig';
 import Const from './PinConst';
 
@@ -10,7 +11,11 @@ export default {
      * @param {object} data - key/value pairs of query parameters to log
      */
     log: function(data) {
-        let query = `?guid=${Config.guid}&via=${encodeURIComponent(location.href)}`;
+        let uri;
+        if(isBrowser) {
+          uri = window.location.href;
+        }
+        let query = `?guid=${Config.guid}&via=${encodeURIComponent(uri)}`;
         Object.keys(data).forEach(key => query += `&${key}=${encodeURIComponent(data[key])}`);
         this.loadScript(Const.URL.LOG + query, {});
     },
@@ -21,6 +26,7 @@ export default {
      * @param {object} attributes - attributes to add to the <script>
      */
     loadScript: function(src, attributes={}) {
+        if(!isBrowser) return;
         var script = document.createElement('script');
         script.src = src;
         Object.keys(attributes).forEach(key => {
