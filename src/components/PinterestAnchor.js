@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Const from '../util/PinConst';
-import Util from '../util/PinUtil';
+import { POPUP_OPTIONS } from '../util/PinConst';
+import { log } from '../util/PinUtil';
 
 /**
  * An <a> tag. Is used to manage click logging and popups.
@@ -9,6 +9,7 @@ import Util from '../util/PinUtil';
  * @prop {string} log - the string to log as <type>
  * @prop {string} className - the string of classes
  * @prop {object} style - the JSX style object
+ * @prop {bool} popup - Show url in popup window
  */
 export default class Anchor extends React.Component {
 
@@ -21,9 +22,9 @@ export default class Anchor extends React.Component {
         if (this.props.popup) {
             evt.preventDefault();
             const key = this.props.popup.toUpperCase();
-            window.open(href, 'pin' + new Date().getTime(), Const.POPUP_OPTIONS[key]);
+            window.open(href, 'pin' + new Date().getTime(), POPUP_OPTIONS[key]);
         }
-        Util.log({ type: this.props.log, href: href });
+        log({ type: this.props.log, href: href });
     }
 
     render() {

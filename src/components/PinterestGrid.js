@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import PinterestBase from './PinterestBase';
-import Util from '../util/PinUtil';
+import { extend } from '../util/PinUtil';
 
 /**
  * This is the classic Pinterest "masonry" grid. It lays out all of the
@@ -43,7 +43,7 @@ export default class PinterestGrid extends PinterestBase {
      * @returns {object} style key/value map
      */
     getStyle() {
-        return Util.extend({
+        return extend({
             opacity: this.state.styles.length ? 1 : 0
         }, this.props.style);
     }
@@ -132,7 +132,7 @@ export default class PinterestGrid extends PinterestBase {
             const style = child.props.style || {};
             return React.cloneElement(child, {
                 ref: `child-${i}`,
-                style: Util.extend({}, this.state.styles[i], child.props.style)
+                style: extend({}, this.state.styles[i], child.props.style)
             });
         });
     }
@@ -155,5 +155,5 @@ PinterestGrid.propTypes = {
 };
 
 PinterestGrid.defaultProps = {
-    gutter: 0 
+    gutter: 0
 };

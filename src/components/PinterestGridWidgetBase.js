@@ -4,9 +4,9 @@ import ReactDOMServer from 'react-dom/server';
 import PinterestBase from './PinterestBase';
 import PinterestGrid from './PinterestGrid';
 import Anchor from './PinterestAnchor';
-import Const from '../util/PinConst';
 import i18n from '../util/i18n';
-import Util from '../util/PinUtil';
+import { URL } from '../util/PinConst';
+import { fetch } from '../util/PinUtil';
 
 const gutter = 2;
 const border = 1;
@@ -30,7 +30,7 @@ export default class PinterestGridWidgetBase extends PinterestBase {
      * Fetch the remote data for a grid widget
      */
     componentDidMount() {
-        Util.fetch(this.data.fetchURL, response => {
+        fetch(this.data.fetchURL, response => {
             if (response && response.data && response.data.user) {
                 this.setState({
                     user: response.data.user,
@@ -99,7 +99,7 @@ export default class PinterestGridWidgetBase extends PinterestBase {
         const thumbWidth = this.getThumbWidth() + 'px';
         return this.state.pins.map((pin, i) => {
             return (
-                <Anchor href={Const.URL.PIN_CLOSEUP + pin.id} log="embed_board_thumb" key={`pin-${i}`}>
+                <Anchor href={URL.PIN_CLOSEUP + pin.id} log="embed_board_thumb" key={`pin-${i}`}>
                     <img width={thumbWidth} src={pin.images['237x'].url} />
                 </Anchor>
             );
@@ -126,7 +126,7 @@ export default class PinterestGridWidgetBase extends PinterestBase {
                 <span className="grid-widget-header-text">
                     <Anchor href={profile_url} log={log}>{full_name}</Anchor>
                     { this.state.board && (
-                        <Anchor href={Const.URL.PINTEREST + board_url} log={log}>{board_name}</Anchor>
+                        <Anchor href={URL.PINTEREST + board_url} log={log}>{board_name}</Anchor>
                     )}
                 </span>
             </div>
@@ -172,4 +172,3 @@ PinterestGridWidgetBase.propTypes = {
     height: React.PropTypes.number.isRequired,
     columns: React.PropTypes.number.isRequired
 };
-    
