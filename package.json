@@ -16,7 +16,7 @@
     "babel-preset-react": "^6.3.13",
     "css-loader": "~0.9.0",
     "express": "^4.13.3",
-    "jest-cli": "^0.8.2",
+    "jest-cli": "^14.1.0",
     "jest-webpack-alias": "^2.0.0",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",
@@ -41,6 +41,9 @@
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/jest.preprocessor.js",
+    "testPathDirs": [
+      "<rootDir>/src"
+    ],
     "testFileExtensions": [
       "es6",
       "js"
