@@ -28,7 +28,7 @@ describe('i18n', function() {
 
         it('should ignore setting the language to an invalid language code, returning false', () => {
             i18n.lang = 'piglatin';
-            expect(i18n.lang).toNotEqual('piglatin');
+            expect(i18n.lang).not.toEqual('piglatin');
         });
 
     });
