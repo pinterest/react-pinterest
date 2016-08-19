@@ -34,7 +34,7 @@ export default class PinItButton extends PinterestBase {
 
     /**
      * Build the url for the button image based on the color, size, and shape
-     * @returns {string} the url for the button's image
+     * @returns {object} the url for the button's image and its size
      */
     getButtonImage() {
         const { color, large, round } = this.props;
@@ -42,7 +42,10 @@ export default class PinItButton extends PinterestBase {
         const size = round ? (large ? '32' : '16') : (large ? '28' : '20');
         const _color = round ? 'red' : color;
         const resolution = getResolution();
-        return `//s-passets.pinimg.com/images/pidgets/pinit_bg_en_${shape}_${_color}_${size}_${resolution}.png`;
+        return {
+            src: `//s-passets.pinimg.com/images/pidgets/pinit_bg_en_${shape}_${_color}_${size}_${resolution}.png`,
+            size
+        };
     }
 
     /**
@@ -62,7 +65,11 @@ export default class PinItButton extends PinterestBase {
      * @returns {object} the inline style object for the button
      */
     getButtonStyle() {
-        return { backgroundImage: `url(${this.getButtonImage()})` };
+        const { url, size } = this.getButtonImage();
+        return {
+            backgroundImage: `url(${url})`,
+            backgroundSize: `${size}px ${size}px`
+        };
     }
 
     /**
