@@ -43,7 +43,7 @@ export default class PinItButton extends PinterestBase {
         const _color = round ? 'red' : color;
         const resolution = getResolution();
         return {
-            url: `//s-passets.pinimg.com/images/pidgets/pinit_bg_en_${shape}_${_color}_${size}_${resolution}.png`,
+            url: `https://s-passets.pinimg.com/images/pidgets/pinit_bg_en_${shape}_${_color}_${size}_${resolution}.png`,
             size
         };
     }
