@@ -1,3 +1,7 @@
+**Note:** This project is no longer actively maintained by Pinterest.
+
+---
+
 ## react-pinterest
 
 As ReactJS continues to increase in popularity for both startups and large-scale technology companies, we wanted to make it as easy as possible to add Pinterest content onto these sites. This helps both you and us. The more content you drive into Pinterest, the more traffic you get in return. React brings widgets to a whole new level, and we are excited to introduce a React component collection of our already popular Pinterest widgets.
