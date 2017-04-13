@@ -74,6 +74,7 @@ export default class PinterestPinWidget extends PinterestBase {
      */
     getPinImage() {
         let url = this.state.pin.images['237x'].url;
+        url.replace(/https?:/,'');
         switch(this.props.size) {
             case 'large':
                 return url.replace('237x', '600x');
