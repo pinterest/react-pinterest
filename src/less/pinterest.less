@@ -1,0 +1,469 @@
+@pinterest-white: #ffffff;
+@pinterest-gray: #a8a8a8;
+
+.pinterest-pinit-button {
+  i {
+    background-position: 0 -20px;
+    background-size: 40px 60px;
+    display: inline-block;
+    height: 20px;
+    vertical-align: middle;
+    width: 40px;
+  }
+  &:hover {
+    i {
+      background-position: 0 0px !important;
+    }
+  }
+}
+
+.pinterest-pinit-button.pinit-button--large {
+  i {
+    background-position: 0 -28px;
+    background-size: 56px 84px;
+    height: 28px;
+    width: 56px;
+  }
+}
+
+.pinterest-pinit-button.pinit-button--round {
+  i {
+    background-position: 0px 0px;
+    background-size: cover;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.pinterest-pinit-button.pinit-button--round.pinit-button--large {
+  i {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.pinterest-follow-button {
+  background-size: 200px 60px;
+  background: transparent url(https://s-passets.pinimg.com/images/pidgets/bfs2.png) 0 0 no-repeat;
+  border-radius: 4px;
+  border-right: 1px solid #D0D0D0;
+  color: #444444;
+  cursor: pointer;
+  display: inline-block;
+  font: bold normal normal 11px/20px "Helvetica Neue",helvetica,arial,san-serif;
+  padding: 0 6px 0 23px;
+  position: relative;
+  text-decoration: none;
+  &:hover {
+    background-position: 0 -20px;
+    border-right-color: #919191;
+  }
+  i {
+    background-image: url(https://s-passets.pinimg.com/images/pidgets/log2.png);
+    background-size: 14px 14px;
+    height: 14px;
+    left: 3px;
+    position: absolute;
+    top: 3px;
+    width: 14px;
+  }
+}
+
+.pinterest-grid {
+  position: relative;
+  transition: opacity .3s;
+}
+
+.pinterest-widget--pin {
+  -webkit-font-smoothing: antialiased;
+  background: @pinterest-white;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .33);
+  color: #363636;
+  display: inline-block;
+  font-family: "Helvetica Neue", arial, sans-serif;
+  max-width: 237px;
+  min-width: 160px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  vertical-align: top;
+  img {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .pin-widget-pin-link {
+    display: block;
+    line-height: 0;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+  }
+  .pin-widget-link-iframe {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    padding-top: 35px;
+    position: relative;
+    iframe {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+  .pin-widget-gif {
+    background: rgba(0, 0, 0, .4);
+    border-radius: 13px;
+    border: 2px solid rgba(255, 255, 255, .68);
+    bottom: 12px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2);
+    color: rgba(255, 255, 255, 1);
+    display: block;
+    font-size: 9px;
+    font-style: normal;
+    font-weight: bold;
+    left: 12px;
+    line-height: 12px;
+    margin: 0;
+    padding: 5px 0;
+    position: absolute;
+    text-decoration: none;
+    white-space: pre;
+    width: 50px;
+    &:hover {
+      background: rgba(0, 0, 0, .8);
+      color: @pinterest-white;
+    }
+  }
+  .pin-widget-pin-link-img {
+    border-bottom: 1px solid rgba(0, 0, 0, .09);
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .pin-widget-repin {
+    background-size: cover;
+    cursor: pointer;
+    height: 28px;
+    left: 10px;
+    position: absolute;
+    top: 10px;
+    width: 53px;
+    z-index: 1;
+    &:hover {
+      height: 27px;
+      left: 11px;
+      top: 11px;
+      width: 51px;
+    }
+  }
+  .pin-widget-header {
+    display: block;
+    min-height: 21px;
+    padding: 13px 0 20px;
+    text-align: right;
+  }
+  .pin-widget-menu {
+    background-size: cover;
+    height: 5px;
+    position: absolute;
+    right: 10px;
+    top: 17px;
+    width: 20px;
+    &:hover {
+      opacity: .7;
+    }
+  }
+  .pin-widget-menu-dropdown {
+    background-color: @pinterest-white;
+    border-radius: 5px;
+    bottom: -42px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .33);
+    font-size: 12px;
+    font-weight: bolder;
+    padding: 5px 15px 5px 5px;
+    position: absolute;
+    right: 10px;
+    text-align: left;
+    &:after {
+      border-bottom: 8px solid @pinterest-white;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      content: "";
+      position: absolute;
+      right: 1px;
+      top: -6px;
+    }
+    &:before {
+      border-bottom: 7px solid #e2e2e2;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      content: "";
+      position: absolute;
+      right: 2px;
+      top: -7px;
+    }
+    a {
+      display: block;
+      padding: 8px;
+      word-break: break-word;
+      &:hover {
+        opacity: .5;
+      }
+    }
+  }
+  .pin-widget-meta {
+    border-bottom: 1px solid rgba(0, 0, 0, .09);
+    display: block;
+    padding: 12px 12px 8px;
+    position: relative;
+    text-align: left;
+    img {
+      border-radius: 0;
+      margin-right: 10px;
+      width: 15px;
+    }
+  }
+  .pin-widget-meta-anchor {
+    color: #b9b9b9;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bolder;
+    max-width: 75%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  .pin-widget-description {
+    border-bottom: 1px solid rgba(0, 0, 0, .09);
+    display: block;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 8px 12px 8px 12px;
+    text-align: left;
+    white-space: normal;
+  }
+  .pin-widget-attrib {
+    color: @pinterest-gray;
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 18px;
+    margin-top: 8px;
+  }
+  .pin-widget-attrib-icon {
+    float: left;
+    height: 16px;
+    margin: 0 5px 0 0;
+    padding: 0;
+    vertical-align: middle;
+    width: 16px;
+  }
+  .pin-widget-attrib-anchor {
+    color: @pinterest-gray;
+    text-decoration: none;
+  }
+  .pin-widget-stats {
+    display: block;
+  }
+  .pin-widget-repin-count {
+    background: url(data:image/png;
+    base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAALCAAAAABq7uO+AAAASklEQVQI10WNMQrAMBRCvf/Z3pQcImPplsIPdqhNXOSJqLxVtnWQsuUO9IM3cHlV8dSSDZQHAOPH2YA2FU+qtH7MRhaVh/xt/PQCEW6N4EV+CPEAAAAASUVORK5CYII=) 0 0 no-repeat;
+    color: @pinterest-gray;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 12px;
+    margin-top: 8px;
+    padding-left: 17px;
+    padding-right: 10px;
+  }
+  .pin-widget-like-count {
+    background: url(data:image/png;
+    base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAKCAAAAAClR+AmAAAAUElEQVR4AT2HMQpFIQwEc/+zbXhFLBW8QUihIAT2E8Q/xe6M0Jv2zK7NKUcBzAlAjzjqtdZl4c8S2nOjMPS6BoWMr/wLVnAbYJs3mGMkXzx+OeRqUf5HHRoAAAAASUVORK5CYII=) 0 2px no-repeat;
+    color: @pinterest-gray;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 12px;
+    margin-top: 8px;
+    padding-left: 17px;
+    padding-right: 10px;
+  }
+  .pin-widget-footer {
+    display: block;
+    height: 30px;
+    padding: 10px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+  }
+  .pin-widget-avatar {
+    border-radius: 15px;
+    border: none;
+    height: 30px;
+    margin: 0 8px 12px 0;
+    overflow: hidden;
+    position: absolute;
+    top: 10px;
+    vertical-align: middle;
+    width: 30px;
+  }
+  .pin-widget-footer-text {
+    cursor: pointer;
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    padding-left: 45px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: auto;
+  }
+}
+
+.pinterest-widget--pin.pin-widget--medium {
+  max-width: 345px;
+  min-width: 237px;
+  width: auto;
+  .pin-widget-repin {
+    height: 32px;
+    width: 60px;
+    &:hover {
+      height: 31px;
+      width: 58px;
+    }
+  }
+}
+
+.pinterest-widget--pin.pin-widget--large {
+  max-width: 536px;
+  min-width: 345px;
+  padding: 0 32px 20px;
+  width: auto;
+  .pin-widget-repin {
+    height: 36px;
+    left: 32px;
+    top: 16px;
+    width: 67px;
+    &:hover {
+      height: 35px;
+      left: 33px;
+      top: 17px;
+      width: 65px;
+    }
+  }
+  .pin-widget-pin-link-img {
+    border-radius: 8px;
+  }
+  .pin-widget-menu-dropdown {
+    right: 0;
+  }
+  .pin-widget-description {
+    border-bottom: none;
+    padding: 10px 10px 0px;
+  }
+  .pin-widget-footer {
+  }
+  .pin-widget-footer-text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .pin-widget-avatar {
+    top: 15px;
+  }
+}
+
+.pinterest-widget--user {
+  .grid-widget-header-text {
+    margin-top: 8px;
+  }
+}
+
+.pinterest-widget--grid {
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .33);
+  display: inline-block;
+  font-family: helvetica, sans-serif;
+  padding: 10px;
+  width: auto;
+  .grid-widget-header {
+    padding-bottom: 5px;
+    text-align: left;
+    img {
+      border-radius: 3px;
+      height: 36px;
+      width: 36px;
+    }
+  }
+  .grid-widget-header-text {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
+    a {
+      color: #8e8e8e;
+      display: block;
+      font-size: 12px;
+      text-decoration: none;
+      &:first-child {
+        color: #333333;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 18px;
+      }
+    }
+  }
+  .pinterest-grid {
+    border-radius: 3px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    a {
+      &:before {
+        bottom: 0;
+        box-shadow: inset 0 0 2px #888888!important;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 2;
+      }
+    }
+    img {
+      display: block;
+    }
+  }
+  .grid-widget-footer {
+    background: #f4f4f4 url(https://s-passets.pinimg.com/images/pidgets/board_button_link.png);
+    border-radius: 2px;
+    border: 1px solid #cccccc;
+    color: #746d6a;
+    display: block;
+    font-family: Helvetica;
+    font-size: 13px;
+    font-weight: bold;
+    height: 31px;
+    line-height: 32px;
+    margin: 10px 0 0;
+    text-align: center;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px @pinterest-white;
+  }
+  .grid-widget-logo {
+    background: transparent url(https://s-passets.pinimg.com/images/pidgets/board_button_logo.png) 50% 48% no-repeat;
+    display: inline-block;
+    height: 15px;
+    vertical-align: text-bottom;
+    width: 70px;
+  }
+}
